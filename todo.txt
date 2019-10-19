@@ -1,0 +1,5 @@
+Turn this into a C++ project.
+
+Use variadic templates rather than veriatic function.
+
+Add this project to Limon as a Git submodule.
