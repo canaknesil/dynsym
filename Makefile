@@ -1,11 +1,11 @@
-CC := gcc
-CFLAGS := -Wall -g
+CC := g++
+CFLAGS := -Wall -g -std=c++14
 LIBS := 
 TARGET := run
 
-SRC := $(shell find . -name '*.c')
+SRC := $(shell find . -name '*.cpp')
 HDR := $(shell find . -name '*.h')
-OBJ := $(patsubst %.c, %.o, $(SRC))
+OBJ := $(patsubst %.cpp, %.o, $(SRC))
 
 .PHONY: clean tags
 all: $(TARGET)
@@ -13,7 +13,7 @@ all: $(TARGET)
 $(TARGET): $(OBJ)
 	$(CC) -o $@ $(OBJ) $(LIBS)
 
-$(OBJ): %.o: %.c $(HDR)
+$(OBJ): %.o: %.cpp $(HDR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
@@ -21,4 +21,4 @@ clean:
 	rm -f $(TARGET)
 
 tags:
-	find . \( -name '*.c' -o -name '*.h' \) | etags -
+	find . \( -name '*.cpp' -o -name '*.c' -o -name '*.h' \) | etags -
